@@ -1,0 +1,154 @@
+<Schema name="BioInfoCubo">
+  <Cube name="BioInfoCubo" visible="true" cache="true" enabled="true">
+    <Table name="fato_execution" schema="public" alias="Tabela Fato">
+    </Table>
+    <Dimension type="StandardDimension" visible="true" foreignKey="id_country" highCardinality="false" name="Dim_Country">
+      <Hierarchy name="Dim_Country" visible="true" hasAll="true" primaryKey="id_country">
+        <Table name="dim_country" schema="public" alias="Dim_Country">
+        </Table>
+        <Level name="Name" visible="true" column="name" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="TimeDimension" visible="true" foreignKey="id_tempo" highCardinality="false" name="Dim_Tempo">
+      <Hierarchy name="Ano" visible="true" hasAll="true" primaryKey="id_tempo">
+        <Table name="dim_tempo" schema="public" alias="Ano">
+        </Table>
+        <Level name="Ano" visible="true" column="ano" type="String" uniqueMembers="false" levelType="TimeYears" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+      <Hierarchy name="Mes" visible="true" hasAll="true" primaryKey="id_tempo">
+        <Table name="dim_tempo" schema="public" alias="Mes">
+        </Table>
+        <Level name="Mes" visible="true" column="mes" type="String" uniqueMembers="false" levelType="TimeMonths" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+      <Hierarchy name="Dia" visible="true" hasAll="true" primaryKey="id_tempo">
+        <Table name="dim_tempo" schema="public" alias="Dia">
+        </Table>
+        <Level name="Dia" visible="true" column="dia" type="String" uniqueMembers="false" levelType="TimeDays" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+      <Hierarchy name="Hora" visible="true" hasAll="true" primaryKey="id_tempo">
+        <Table name="dim_tempo" schema="public" alias="Hora">
+        </Table>
+        <Level name="Hora" visible="true" column="hora" type="String" uniqueMembers="false" levelType="TimeHours" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="id_application" highCardinality="false" name="Dim_application">
+      <Hierarchy name="Name_Application" visible="true" hasAll="true" primaryKey="id_application">
+        <Table name="dim_application" schema="public" alias="Name_Application">
+        </Table>
+        <Level name="Name Application" visible="true" column="name_aplication" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+      <Hierarchy name="Dim_version" visible="true" hasAll="true" primaryKey="id_application">
+        <Table name="dim_application" schema="public" alias="Dim_version">
+        </Table>
+        <Level name="Version Application" visible="true" column="version_name" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="id_user" highCardinality="false" name="Dim_Usuario">
+      <Hierarchy name="Dim_user" visible="true" hasAll="true" primaryKey="id_user">
+        <Table name="dim_user_bioinfo" schema="public" alias="Dim_user">
+        </Table>
+        <Level name="E-mail" visible="true" column="email" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="id_cluster" highCardinality="false" name="Dim_Cluster">
+      <Hierarchy name="Dim_Cluster" visible="true" hasAll="true" primaryKey="id_cluster">
+        <Table name="dim_cluster" schema="public" alias="Dim_cluster">
+        </Table>
+        <Level name="Name Cluster" visible="true" column="name" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+      <Hierarchy name="Dim_Num_Cores" visible="true" hasAll="true" primaryKey="id_cluster">
+        <Table name="dim_cluster" schema="public" alias="Dim_Num_Cores">
+        </Table>
+        <Level name="Num_Cores" visible="true" column="num_cores" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="id_institution" highCardinality="false" name="Dim_institution">
+      <Hierarchy name="Dim_Instutiton" visible="true" hasAll="true" primaryKey="id_institution">
+        <Table name="dim_institution" schema="public" alias="Dim_institution">
+        </Table>
+        <Level name="Name Institution" visible="true" column="name" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="id_file" highCardinality="false" name="Dim_File">
+      <Hierarchy name="Dim_Input_File" visible="true" hasAll="true" primaryKey="id_file">
+        <Table name="dim_file" schema="public" alias="Dim_file">
+        </Table>
+        <Level name="Input_File" visible="true" column="input_file" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+      <Hierarchy name="Dim_Path" visible="true" hasAll="true" primaryKey="id_file">
+        <Table name="dim_file" schema="public" alias="Dim_file">
+        </Table>
+        <Level name="Path" visible="true" column="path" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+      <Hierarchy name="New Hierarchy 2" visible="true" hasAll="true" primaryKey="id_file">
+        <Table name="dim_file" schema="public" alias="Dim_file">
+        </Table>
+        <Level name="Size" visible="true" column="size" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="id_gateway" highCardinality="false" name="Dim_Gateway">
+      <Hierarchy name="Dim_Gateway" visible="true" hasAll="true" primaryKey="id_gateway">
+        <Table name="dim_gateway" schema="public" alias="Dim_gateway">
+        </Table>
+        <Level name="Gateway Name" visible="true" column="name" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="id_queue" highCardinality="false" name="Dim_Queue">
+      <Hierarchy name="Dim_Queue" visible="true" hasAll="true" primaryKey="id_queue">
+        <Table name="dim_queue" schema="public" alias="Dim_queue">
+        </Table>
+        <Level name="Name Queue" visible="true" column="name" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="id_scheduler" highCardinality="false" name="Dim_Sheduler">
+      <Hierarchy name="New Hierarchy 0" visible="true" hasAll="true" primaryKey="id_scheduler">
+        <Table name="dim_scheduler" schema="public" alias="Dim_Scheduler">
+        </Table>
+        <Level name="Name Scheduler" visible="true" column="name" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="id_status" highCardinality="false" name="Dim_Status">
+      <Hierarchy name="Dim_status" visible="true" hasAll="true" primaryKey="id_status">
+        <Table name="dim_status" schema="public" alias="Dim_status">
+        </Table>
+        <Level name="Status" visible="true" column="status" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="id_algorithm_type" highCardinality="false" name="Dim_Algorithm_Types">
+      <Hierarchy name="Dim_Algorithm_Types" visible="true" hasAll="true" primaryKey="id_algorithm_type">
+        <Table name="dim_algorithm_type" schema="public" alias="Dim_Algorithm_Types">
+        </Table>
+        <Level name="Algorithm_Types" visible="true" column="algorithm_type" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Measure name="Quantidade" column="quantidade" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Start_time" column="start_time" aggregator="distinct count" visible="true">
+    </Measure>
+    <Measure name="End_time" column="end_time" aggregator="distinct count" visible="true">
+    </Measure>
+    <Measure name="Cpu_time" column="cpu_time" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="Parameters" column="parameters" aggregator="distinct-count" visible="true">
+    </Measure>
+  </Cube>
+</Schema>
